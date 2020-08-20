@@ -15,8 +15,9 @@ const { width } = Dimensions.get("window");
 function WelcomeScreen({ navigation }) {
     return (
       <View>
+        <React.Fragment>
         <Video
-          source={require("../assets/GoBananas!.mp4")}
+          source={require("../assets/GoBananas.mp4")}
           rate={1.0}
           volume={1.0}
           isMuted={false}
@@ -24,13 +25,13 @@ function WelcomeScreen({ navigation }) {
           shouldPlay
           isLooping
           style={{ width: "100%", height: "100%" }}
-        >
-          <Button
-            title="Get Quote"
-            style={styles.someButton}
-            onPress={() => navigation.navigate("Quote")} //must match any name prop given in App.js for the Stack Screen
+          ></Video>
+        <Button
+          title="Get Quote"
+          style={styles.someButton}
+          onPress={() => navigation.navigate("Quote")}
           ></Button>
-        </Video>
+          </React.Fragment>
       </View>
     );
 }

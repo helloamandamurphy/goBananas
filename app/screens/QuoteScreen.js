@@ -15,7 +15,7 @@ import quoteData from "../quoteData";
 
 
 function QuoteScreen({ navigation }) {
-<<<<<<< HEAD
+
     return (
         <View>
             
@@ -29,7 +29,7 @@ function QuoteScreen({ navigation }) {
      
     );}
     
-=======
+
   return (
     <React.Fragment>
       <Text style={styles.quoteText}>"{quoteText}"</Text>
@@ -41,9 +41,8 @@ function QuoteScreen({ navigation }) {
       ></Button>
     </React.Fragment>
   );
-}
 
->>>>>>> cfa453f59c1c0ea4620f35bd670c9231e7710785
+
 const styles = StyleSheet.create({
   someButton: {
     color: "red",
