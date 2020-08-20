@@ -18,22 +18,17 @@ function WelcomeScreen({ navigation }) {
     <React.Fragment>
       <View>
         <React.Fragment>
-        <Video
-          source={require("../assets/GoBananas.mp4")}
-          rate={1.0}
-          volume={1.0}
-          isMuted={false}
-          resizeMode="cover"
-          shouldPlay
-          isLooping
-          style={{ width: "100%", height: "100%" }}
+          <Video
+            source={require("../assets/GoBananas.mp4")}
+            rate={1.0}
+            volume={1.0}
+            isMuted={false}
+            resizeMode="cover"
+            shouldPlay
+            isLooping
+            style={{ width: "100%", height: "100%" }}
           ></Video>
-        <Button
-          title="Get Quote"
-          style={styles.someButton}
-          onPress={() => navigation.navigate("Quote")}
-          ></Button>
-          </React.Fragment>
+        </React.Fragment>
       </View>
       <View style={styles.someButton}>
         <Button

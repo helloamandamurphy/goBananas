@@ -3,14 +3,37 @@ import {
   StyleSheet,
   Button,
   ImageBackground,
+  Share,
   Text,
   View,
-  TouchableOpacity,
 } from "react-native";
 import quoteData from "../quoteData";
 import runts from "../assets/runts.jpg";
 
 function QuoteScreen({ navigation }) {
+  const quoteInfo = quoteData[Math.floor(Math.random() * quoteData.length)];
+  const quoteText = quoteInfo.quote;
+  const authorName = quoteInfo.author;
+
+  const onShare = async () => {
+    try {
+      const result = await Share.share({
+        message: quoteText,
+      });
+      if (result.action === Share.sharedAction) {
+        if (result.activityType) {
+          console.log("1");
+        } else {
+          console.log("2");
+        }
+      } else if (result.action === Share.dismissedAction) {
+        console.log("3");
+      }
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+
   return (
     <ImageBackground source={runts} style={{ width: "100%", height: "100%" }}>
       <View style={styles.edge}>
@@ -18,11 +41,17 @@ function QuoteScreen({ navigation }) {
           <Text style={styles.quoteText}>"{quoteText}"</Text>
           <Text style={styles.authorName}>-{authorName}</Text>
         </View>
-        <Button
-          title="Take Pic"
-          style={styles.someButton}
-          onPress={() => navigation.navigate("Camera")} //must match any name prop given in App.js for the Stack Screen
-        ></Button>
+
+        <View style={styles.buttonFill}>
+          <Button onPress={onShare} title="Share"></Button>
+        </View>
+
+        <View style={styles.buttonFill}>
+          <Button
+            title="Take a Photo"
+            onPress={() => navigation.navigate("Camera")} //must match any name prop given in App.js for the Stack Screen
+          ></Button>
+        </View>
       </View>
     </ImageBackground>
   );
@@ -30,7 +59,9 @@ function QuoteScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   edge: {
+    flex: 1,
     padding: 20,
+    justifyContent: "center",
   },
 
   textBlock: {
@@ -48,10 +79,14 @@ const styles = StyleSheet.create({
     padding: 10,
     textAlign: "right",
   },
-});
 
-const quoteInfo = quoteData[Math.floor(Math.random() * quoteData.length)];
-const quoteText = quoteInfo.quote;
-const authorName = quoteInfo.author;
+  buttonFill: {
+    backgroundColor: "#51cb2c",
+    width: "50%",
+
+    justifyContent: "center",
+    margin: 5,
+  },
+});
 
 export default QuoteScreen;
