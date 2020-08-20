@@ -5,18 +5,24 @@ import {
   ImageBackground,
   Text,
   View,
-  TouchableOpacity,
+    TouchableOpacity,
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 
+
 function QuoteScreen({ navigation }) {
     return (
-        <Button
-            title="Take Pic"
-            style={styles.someButton}
-            onPress={() => navigation.navigate("Camera")} //must match any name prop given in App.js for the Stack Screen
-        ></Button>
-);}
+        <View>
+            
+            
+            <Button
+              title="Take Pic"
+              style={styles.someButton}
+              onPress={() => navigation.navigate("Camera")} //must match any name prop given in App.js for the Stack Screen
+            ></Button>
+      </View>
+     
+    );}
     
 const styles = StyleSheet.create({
     someButton: {
