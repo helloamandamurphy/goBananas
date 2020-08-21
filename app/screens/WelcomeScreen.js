@@ -19,26 +19,21 @@ function WelcomeScreen({ navigation }) {
       <View>
         <React.Fragment>
         <Video
-          source={require("../assets/GoBananas.mp4")}
+          source={require("../assets/GoBananas2.mp4")}
           rate={1.0}
           volume={1.0}
           isMuted={false}
           resizeMode="cover"
           shouldPlay
           isLooping
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: "95%" }}
           ></Video>
-        <Button
-          title="Get Quote"
-          style={styles.someButton}
-          onPress={() => navigation.navigate("Quote")}
-          ></Button>
           </React.Fragment>
       </View>
       <View style={styles.someButton}>
         <Button
-          title="Get Quote"
-          // style={styles.someButton}
+          title="Get Your Banana Quote of the day!"
+          style={styles.someButton}
           onPress={() => navigation.navigate("Quote")} //must match any name prop given in App.js for the Stack Screen
         ></Button>
       </View>
@@ -47,11 +42,11 @@ function WelcomeScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  //button wont move down...
   someButton: {
-    justifyContent: "flex-end",
+    justifyContent: "center",
     position: "absolute",
-    bottom: 0,
+    bottom: 20,
+    left: '38%',
     alignContent: "flex-end",
     flex: 1,
   },
