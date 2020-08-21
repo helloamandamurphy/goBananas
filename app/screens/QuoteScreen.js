@@ -9,16 +9,29 @@ import {
 } from "react-native";
 import quoteData from "../quoteData";
 import runts from "../assets/runts.jpg";
+import { useNavigation } from "@react-navigation/native";
 
-function QuoteScreen({ navigation }) {
-  const quoteInfo = quoteData[Math.floor(Math.random() * quoteData.length)];
-  const quoteText = quoteInfo.quote;
-  const authorName = quoteInfo.author;
+class QuoteScreen extends React.Component {
+  constructor() {
+    super();
+    this.state = {
+      quoteText: quoteData[Math.floor(Math.random() * quoteData.length)].quote,
+      authorName:
+        quoteData[Math.floor(Math.random() * quoteData.length)].author,
+    };
+  }
+  getQuote = () => {
+    let quoteInfo = quoteData[Math.floor(Math.random() * quoteData.length)];
+    this.setState({
+      quoteText: quoteInfo.quote,
+      authorName: quoteInfo.author,
+    });
+  };
 
-  const onShare = async () => {
+  onShare = async () => {
     try {
       const result = await Share.share({
-        message: quoteText,
+        message: `"${this.state.quoteText}" -${this.state.authorName}`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -34,44 +47,67 @@ function QuoteScreen({ navigation }) {
     }
   };
 
-  return (
-    <ImageBackground source={runts} style={{ width: "100%", height: "100%" }}>
-      <View style={styles.edge}>
-        <View style={styles.textBlock}>
-          <Text style={styles.quoteText}>"{quoteText}"</Text>
-          <Text style={styles.authorName}>-{authorName}</Text>
-        </View>
+  render() {
+    return (
+      <ImageBackground source={runts} style={styles.backgroundImg}>
+        <View style={styles.content}>
+          <View style={styles.textBlock}>
+            <Text style={styles.quoteText}>"{this.state.quoteText}"</Text>
+            <Text style={styles.authorName}>-{this.state.authorName}</Text>
+          </View>
 
-        <View style={styles.buttonFill}>
-          <Button onPress={onShare} title="Share"></Button>
-        </View>
+          <View style={styles.buttonContainer}>
+            <View style={styles.buttonFill}>
+              <Button
+                onPress={this.onShare}
+                title="Share"
+                color="white"
+              ></Button>
+            </View>
 
-        <View style={styles.buttonFill}>
-          <Button
-            title="Take a Photo"
-            onPress={() => navigation.navigate("Camera")} //must match any name prop given in App.js for the Stack Screen
-          ></Button>
+            <View style={styles.buttonFill}>
+              <Button
+                onPress={this.getQuote}
+                title="New Quote"
+                color="white"
+              ></Button>
+            </View>
+
+            <View style={styles.buttonFill}>
+              <Button
+                title="Take a Photo"
+                onPress={() => this.props.navigation.push("Camera")} //must match any name prop given in App.js for the Stack Screen
+                color="white"
+              ></Button>
+            </View>
+          </View>
         </View>
-      </View>
-    </ImageBackground>
-  );
+      </ImageBackground>
+    );
+  }
 }
 
 const styles = StyleSheet.create({
-  edge: {
+  backgroundImg: {
+    width: "100%",
+    height: "100%",
+  },
+
+  content: {
     flex: 1,
     padding: 20,
-    justifyContent: "center",
   },
 
   textBlock: {
     padding: 20,
     backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   quoteText: {
     fontFamily: "HelveticaNeue-Thin",
-    fontSize: 22,
+    fontSize: 20,
   },
 
   authorName: {
@@ -80,11 +116,15 @@ const styles = StyleSheet.create({
     textAlign: "right",
   },
 
+  buttonContainer: {
+    flex: 1,
+    alignItems: "center",
+    padding: 20,
+  },
+
   buttonFill: {
     backgroundColor: "#51cb2c",
     width: "50%",
-
-    justifyContent: "center",
     margin: 5,
   },
 });
