@@ -61,7 +61,7 @@ class QuoteScreen extends React.Component {
               <Button
                 onPress={this.onShare}
                 title="Share"
-                color="white"
+                color="black"
               ></Button>
             </View>
 
@@ -69,7 +69,7 @@ class QuoteScreen extends React.Component {
               <Button
                 onPress={this.getQuote}
                 title="New Quote"
-                color="white"
+                color="black"
               ></Button>
             </View>
 
@@ -77,7 +77,7 @@ class QuoteScreen extends React.Component {
               <Button
                 title="Take a Photo"
                 onPress={() => this.props.navigation.push("Camera")} //must match any name prop given in App.js for the Stack Screen
-                color="white"
+                color="black"
               ></Button>
             </View>
           </View>
