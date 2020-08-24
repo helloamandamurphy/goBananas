@@ -39,7 +39,7 @@ export default class App extends React.Component {
           <Stack.Screen name="Camera" component={CameraScreen} />
         </Stack.Navigator>
       </NavigationContainer>
-  );
+    );
   }
 }
 

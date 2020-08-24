@@ -6,7 +6,7 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Dimensions,
+  Dimensions, Linking
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { Video } from "expo-av";
@@ -26,15 +26,23 @@ function WelcomeScreen({ navigation }) {
             resizeMode="cover"
             shouldPlay
             isLooping
-            style={{ width: "100%", height: 700 }}>
-            <View style={styles.textBox}>
-              <Text style={styles.textLink}>
-                Inspired by the Amazon Banana Carts!
-              </Text>
-            </View>
+            style={{ width: "100%", height: 700 }}
+          >
           </Video>
         </React.Fragment>
       </View>
+            <View style={styles.textBox}>
+              <Text
+                style={styles.textLink}
+                onPress={() =>
+                  Linking.openURL(
+                    "https://www.aboutamazon.com/the-community-banana-stand"
+                  )
+                }
+              >
+                Inspired by the Amazon Banana Stands!
+              </Text>
+            </View>
       <View style={styles.bottomView}>
         <Button
           title="Get Your Banana Quote of the day!"
@@ -54,6 +62,7 @@ const styles = StyleSheet.create({
     left: '38%',
     alignContent: "flex-end",
     flex: 1,
+    backgroundColor: 'teal'
   },
   bottomView: {
     backgroundColor: "pink",
@@ -64,8 +73,8 @@ const styles = StyleSheet.create({
     
   },
   textLink: {
-    alignContent: "center",
-    justifyContent: 'center',
+    // alignContent: "center",
+    // justifyContent: 'center',
     // position: "absolute",
     // top: 255,
     // left: 48,
@@ -77,11 +86,13 @@ const styles = StyleSheet.create({
   textBox: {
     backgroundColor: "teal",
     height: 40,
-    width: '85%',
+    width: '86%',
     position: "absolute",
-    top: 550,
+    top: 235,
     left: 30,
-    borderRadius: 10
+    borderRadius: 10,
+    alignContent: 'center',
+    justifyContent: 'center'
   }
 });
 
