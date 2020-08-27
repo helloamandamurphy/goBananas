@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import quoteData from "../quoteData";
 import runts from "../assets/runts.jpg";
-import { useNavigation } from "@react-navigation/native";
 
 class QuoteScreen extends React.Component {
   constructor() {
@@ -96,13 +95,13 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     padding: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   textBlock: {
     padding: 20,
     backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center",
   },
 
   quoteText: {
