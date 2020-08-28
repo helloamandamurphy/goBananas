@@ -8,7 +8,8 @@ import {
   View,
 } from "react-native";
 import quoteData from "../quoteData";
-import runts from "../assets/runts.jpg";
+import bananas from "../assets/bananas.jpg";
+// Image from Unsplash: https://unsplash.com/photos/Ar0QYv-qtw4
 
 class QuoteScreen extends React.Component {
   constructor() {
@@ -48,7 +49,7 @@ class QuoteScreen extends React.Component {
 
   render() {
     return (
-      <ImageBackground source={runts} style={styles.backgroundImg}>
+      <ImageBackground source={bananas} style={styles.backgroundImg}>
         <View style={styles.content}>
           <View style={styles.textBlock}>
             <Text style={styles.quoteText}>"{this.state.quoteText}"</Text>
@@ -122,9 +123,10 @@ const styles = StyleSheet.create({
   },
 
   buttonFill: {
-    backgroundColor: "#51cb2c",
+    backgroundColor: "#cfe571",
     width: "50%",
     margin: 5,
+    borderRadius: 10,
   },
 });
 
