@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
   textBlock: {
     padding: 20,
     backgroundColor: "white",
+    opacity: 0.7,
   },
 
   quoteText: {

@@ -5,7 +5,8 @@ import {
   View,
   TouchableOpacity,
   Platform,
-  Image, CameraRoll
+  Image,
+  CameraRoll,
 } from "react-native";
 import { Camera } from "expo-camera";
 import * as Permissions from "expo-permissions";
@@ -69,7 +70,7 @@ export default class CameraScreen extends React.Component {
 
   render() {
     const { hasPermission } = this.state;
-    
+
     if (hasPermission === null) {
       return <View />;
     } else if (hasPermission === false) {
@@ -92,6 +93,20 @@ export default class CameraScreen extends React.Component {
                 margin: 30,
               }}
             >
+              <View style={styles.paragraph}>
+                <Text>
+                  {" "}
+                  "One of the only ways to get out of a tight box is to invent
+                  your way out."{" "}
+                </Text>
+              </View>
+              <View>
+                <Image
+                  source={require("../assets/bananaBubble2.png")}
+                  style={styles.frame}
+                />
+              </View>
+
               {/* <StickerPicker
                 visible={this.state.pickerVisible}
                 topContainer={
@@ -159,7 +174,10 @@ export default class CameraScreen extends React.Component {
                   style={{ color: "#fff", fontSize: 40 }}
                 />
               </TouchableOpacity>
-              <Image source={require('../assets/bananaBubble.png')} style={styles.frame} /> 
+              {/*<Image
+                source={require("../assets/bananaBubble.png")}
+                style={styles.frame}
+              />*/}
             </View>
           </Camera>
         </View>
@@ -169,10 +187,22 @@ export default class CameraScreen extends React.Component {
 }
 const styles = StyleSheet.create({
   frame: {
-    width: 300,
-    height: 300,
-    position: 'absolute',
-    top: 400,
-    left: 5
-  }
+    width: 100,
+    height: 100,
+    justifyContent: "flex-end",
+    position: "absolute",
+    bottom: 65,
+    left: 250,
+  },
+  paragraph: {
+    justifyContent: "center",
+    textAlign: "center",
+    width: 250,
+    height: 50,
+    position: "absolute",
+    bottom: 100,
+    right: 100,
+
+    backgroundColor: "teal",
+  },
 });
