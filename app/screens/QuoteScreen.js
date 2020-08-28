@@ -12,27 +12,24 @@ import bananas from "../assets/bananas.jpg";
 // Image from Unsplash: https://unsplash.com/photos/Ar0QYv-qtw4
 
 class QuoteScreen extends React.Component {
-  // Gotta fix initial state--it's pulling a quote and an author from different entries
   constructor() {
     super();
     this.state = {
-      quoteText: quoteData[Math.floor(Math.random() * quoteData.length)].quote,
-      authorName:
-        quoteData[Math.floor(Math.random() * quoteData.length)].author,
+      quoteInfo: quoteData[Math.floor(Math.random() * quoteData.length)],
     };
   }
+
   getQuote = () => {
     let quoteInfo = quoteData[Math.floor(Math.random() * quoteData.length)];
     this.setState({
-      quoteText: quoteInfo.quote,
-      authorName: quoteInfo.author,
+      quoteInfo: quoteInfo,
     });
   };
 
   onShare = async () => {
     try {
       const result = await Share.share({
-        message: `"${this.state.quoteText}" -${this.state.authorName}`,
+        message: `"${this.state.quoteInfo.quote}" -${this.state.quoteInfo.author}`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -53,8 +50,10 @@ class QuoteScreen extends React.Component {
       <ImageBackground source={bananas} style={styles.backgroundImg}>
         <View style={styles.content}>
           <View style={styles.textBlock}>
-            <Text style={styles.quoteText}>"{this.state.quoteText}"</Text>
-            <Text style={styles.authorName}>-{this.state.authorName}</Text>
+            <Text style={styles.quoteText}>"{this.state.quoteInfo.quote}"</Text>
+            <Text style={styles.authorName}>
+              -{this.state.quoteInfo.author}
+            </Text>
           </View>
 
           <View style={styles.buttonContainer}>
@@ -79,7 +78,7 @@ class QuoteScreen extends React.Component {
                 title="Take a Photo"
                 onPress={() =>
                   this.props.navigation.push("Camera", {
-                    quote: this.state.quoteText, //Just passing quote for now.
+                    quote: this.state.quoteInfo.quote, //Just passing quote for now.
                   })
                 } //must match any name prop given in App.js for the Stack Screen
                 color="black"
