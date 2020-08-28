@@ -60,7 +60,7 @@ export default class CameraScreen extends React.Component {
     if (this.camera) {
       const { uri } = await this.camera.takePictureAsync();
       console.log("uri", uri);
-      const asset = await MediaLibrary.createAssetAsync(uri);
+      const asset = await MediaLibrary.saveToLibraryAsync(uri);
       console.log("asset", asset);
     }
   };
