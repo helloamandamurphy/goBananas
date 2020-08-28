@@ -19,6 +19,7 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import * as MediaLibrary from "expo-media-library";
 import { StickerPicker } from "react-native-stickers";
+import { takeSnapshotAsync } from "react-native-view-shot";
 
 export default class CameraScreen extends React.Component {
   state = {
@@ -202,14 +203,16 @@ const styles = StyleSheet.create({
     left: 250,
   },
   paragraph: {
-    justifyContent: "center",
+    justifyContent: "flex-end",
     textAlign: "center",
-    width: 250,
-    height: 50,
+    flexWrap: "wrap",
+    padding: 10,
     position: "absolute",
+    right: 20,
     bottom: 100,
     right: 100,
-
-    backgroundColor: "teal",
+    opacity: 0.6,
+    backgroundColor: "white",
+    borderRadius: 10,
   },
 });
