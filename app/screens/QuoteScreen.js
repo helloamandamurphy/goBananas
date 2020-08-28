@@ -12,6 +12,7 @@ import bananas from "../assets/bananas.jpg";
 // Image from Unsplash: https://unsplash.com/photos/Ar0QYv-qtw4
 
 class QuoteScreen extends React.Component {
+  // Gotta fix initial state--it's pulling a quote and an author from different entries
   constructor() {
     super();
     this.state = {
@@ -76,7 +77,11 @@ class QuoteScreen extends React.Component {
             <View style={styles.buttonFill}>
               <Button
                 title="Take a Photo"
-                onPress={() => this.props.navigation.push("Camera")} //must match any name prop given in App.js for the Stack Screen
+                onPress={() =>
+                  this.props.navigation.push("Camera", {
+                    quote: this.state.quoteText, //Just passing quote for now.
+                  })
+                } //must match any name prop given in App.js for the Stack Screen
                 color="black"
               ></Button>
             </View>

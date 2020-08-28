@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Platform,
   Image,
+  Button,
   CameraRoll,
 } from "react-native";
 import { Camera } from "expo-camera";
@@ -23,6 +24,7 @@ export default class CameraScreen extends React.Component {
   state = {
     hasPermission: null,
     cameraType: Camera.Constants.Type.back,
+    quote: this.props.route.params.quote,
   };
 
   async componentDidMount() {
@@ -94,10 +96,15 @@ export default class CameraScreen extends React.Component {
               }}
             >
               <View style={styles.paragraph}>
+                {/* This button is just to demonstrate how Amanda found the quote in this.props-DELETE LATER
+                <Button
+                  title="Get Props"
+                  onPress={() => console.log(this.props.route.params.quote)}
+                ></Button> */}
                 <Text>
-                  {" "}
-                  "One of the only ways to get out of a tight box is to invent
-                  your way out."{" "}
+                  {` "`}
+                  {this.state.quote}
+                  {`" `}
                 </Text>
               </View>
               <View>
