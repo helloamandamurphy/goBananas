@@ -8,30 +8,28 @@ import {
   View,
 } from "react-native";
 import quoteData from "../quoteData";
-import runts from "../assets/runts.jpg";
-import { useNavigation } from "@react-navigation/native";
+import bananas from "../assets/bananas.jpg";
+// Image from Unsplash: https://unsplash.com/photos/Ar0QYv-qtw4
 
 class QuoteScreen extends React.Component {
   constructor() {
     super();
     this.state = {
-      quoteText: quoteData[Math.floor(Math.random() * quoteData.length)].quote,
-      authorName:
-        quoteData[Math.floor(Math.random() * quoteData.length)].author,
+      quoteInfo: quoteData[Math.floor(Math.random() * quoteData.length)],
     };
   }
+
   getQuote = () => {
     let quoteInfo = quoteData[Math.floor(Math.random() * quoteData.length)];
     this.setState({
-      quoteText: quoteInfo.quote,
-      authorName: quoteInfo.author,
+      quoteInfo: quoteInfo,
     });
   };
 
   onShare = async () => {
     try {
       const result = await Share.share({
-        message: `"${this.state.quoteText}" -${this.state.authorName}`,
+        message: `"${this.state.quoteInfo.quote}" -${this.state.quoteInfo.author}`,
       });
       if (result.action === Share.sharedAction) {
         if (result.activityType) {
@@ -49,11 +47,13 @@ class QuoteScreen extends React.Component {
 
   render() {
     return (
-      <ImageBackground source={runts} style={styles.backgroundImg}>
+      <ImageBackground source={bananas} style={styles.backgroundImg}>
         <View style={styles.content}>
           <View style={styles.textBlock}>
-            <Text style={styles.quoteText}>"{this.state.quoteText}"</Text>
-            <Text style={styles.authorName}>-{this.state.authorName}</Text>
+            <Text style={styles.quoteText}>"{this.state.quoteInfo.quote}"</Text>
+            <Text style={styles.authorName}>
+              -{this.state.quoteInfo.author}
+            </Text>
           </View>
 
           <View style={styles.buttonContainer}>
@@ -76,7 +76,11 @@ class QuoteScreen extends React.Component {
             {/* <View style={styles.buttonFill}>
               <Button
                 title="Take a Photo"
-                onPress={() => this.props.navigation.push("Camera")} //must match any name prop given in App.js for the Stack Screen
+                onPress={() =>
+                  this.props.navigation.push("Camera", {
+                    quote: this.state.quoteInfo.quote, //Just passing quote for now.
+                  })
+                } //must match any name prop given in App.js for the Stack Screen
                 color="black"
               ></Button>
             </View> */}
@@ -96,13 +100,14 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     padding: 20,
+    justifyContent: "center",
+    alignItems: "center",
   },
 
   textBlock: {
     padding: 20,
     backgroundColor: "white",
-    justifyContent: "center",
-    alignItems: "center",
+    opacity: 0.7,
   },
 
   quoteText: {
@@ -123,9 +128,10 @@ const styles = StyleSheet.create({
   },
 
   buttonFill: {
-    backgroundColor: "#51cb2c",
+    backgroundColor: "#cfe571",
     width: "50%",
     margin: 5,
+    borderRadius: 10,
   },
 });
 

@@ -5,7 +5,9 @@ import {
   View,
   TouchableOpacity,
   Platform,
-  Image, CameraRoll
+  Image,
+  Button,
+  CameraRoll,
 } from "react-native";
 import { Camera } from "expo-camera";
 import * as Permissions from "expo-permissions";
@@ -17,11 +19,13 @@ import {
 import * as ImagePicker from "expo-image-picker";
 import * as MediaLibrary from "expo-media-library";
 import { StickerPicker } from "react-native-stickers";
+import { takeSnapshotAsync } from "react-native-view-shot";
 
 export default class CameraScreen extends React.Component {
   state = {
     hasPermission: null,
     cameraType: Camera.Constants.Type.back,
+    quote: this.props.route.params.quote,
   };
 
   async componentDidMount() {
@@ -56,7 +60,7 @@ export default class CameraScreen extends React.Component {
     if (this.camera) {
       const { uri } = await this.camera.takePictureAsync();
       console.log("uri", uri);
-      const asset = await MediaLibrary.createAssetAsync(uri);
+      const asset = await MediaLibrary.saveToLibraryAsync(uri);
       console.log("asset", asset);
     }
   };
@@ -69,7 +73,7 @@ export default class CameraScreen extends React.Component {
 
   render() {
     const { hasPermission } = this.state;
-    
+
     if (hasPermission === null) {
       return <View />;
     } else if (hasPermission === false) {
@@ -92,6 +96,25 @@ export default class CameraScreen extends React.Component {
                 margin: 30,
               }}
             >
+              <View style={styles.paragraph}>
+                {/* This button is just to demonstrate how Amanda found the quote in this.props-DELETE LATER
+                <Button
+                  title="Get Props"
+                  onPress={() => console.log(this.props.route.params.quote)}
+                ></Button> */}
+                <Text>
+                  {` "`}
+                  {this.state.quote}
+                  {`" `}
+                </Text>
+              </View>
+              <View>
+                <Image
+                  source={require("../assets/bananaBubble2.png")}
+                  style={styles.frame}
+                />
+              </View>
+
               {/* <StickerPicker
                 visible={this.state.pickerVisible}
                 topContainer={
@@ -159,7 +182,10 @@ export default class CameraScreen extends React.Component {
                   style={{ color: "#fff", fontSize: 40 }}
                 />
               </TouchableOpacity>
-              <Image source={require('../assets/bananaBubble.png')} style={styles.frame} /> 
+              {/*<Image
+                source={require("../assets/bananaBubble.png")}
+                style={styles.frame}
+              />*/}
             </View>
           </Camera>
         </View>
@@ -169,10 +195,24 @@ export default class CameraScreen extends React.Component {
 }
 const styles = StyleSheet.create({
   frame: {
-    width: 300,
-    height: 300,
-    position: 'absolute',
-    top: 400,
-    left: 5
-  }
+    width: 100,
+    height: 100,
+    justifyContent: "flex-end",
+    position: "absolute",
+    bottom: 65,
+    left: 250,
+  },
+  paragraph: {
+    justifyContent: "flex-end",
+    textAlign: "center",
+    flexWrap: "wrap",
+    padding: 10,
+    position: "absolute",
+    right: 20,
+    bottom: 100,
+    right: 100,
+    opacity: 0.6,
+    backgroundColor: "white",
+    borderRadius: 10,
+  },
 });
