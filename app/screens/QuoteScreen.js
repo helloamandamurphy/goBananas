@@ -73,13 +73,13 @@ class QuoteScreen extends React.Component {
               ></Button>
             </View>
 
-            <View style={styles.buttonFill}>
+            {/* <View style={styles.buttonFill}>
               <Button
                 title="Take a Photo"
                 onPress={() => this.props.navigation.push("Camera")} //must match any name prop given in App.js for the Stack Screen
                 color="black"
               ></Button>
-            </View>
+            </View> */}
           </View>
         </View>
       </ImageBackground>
