@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Root,
   Container,
   Button,
   Toast,
@@ -177,6 +178,7 @@ export default class GameScreen extends React.Component {
 
   render() {
     return (
+      <Root>
       <Container>
         <Header>
           <Left />
@@ -188,12 +190,18 @@ export default class GameScreen extends React.Component {
         <View style={styles.container}>
           {this.renderBoard()}
           {this.state.x.length + this.state.o.length > 0 && (
-            <Button bordered large onPress={this.resetBoard}>
-              <NText>New Game</NText>
-            </Button>
+            <React.Fragment>
+              <Button bordered large onPress={this.resetBoard}>
+                <Text>New Game</Text>
+              </Button>
+              <Button bordered large onPress={this.resetBoard}>
+                <Text>Get Quote!</Text>
+              </Button>
+          </React.Fragment>
           )}
         </View>
       </Container>
+      </Root>
     );
   }
 }
