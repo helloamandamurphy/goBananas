@@ -18,7 +18,7 @@ function WelcomeScreen({ navigation }) {
     <View style={styles.container}>
       <View>
         <Text>
-          Inpsired By the{" "}
+          Inpsired By the
           <TouchableOpacity
             onPress={() =>
               Linking.openURL(
@@ -26,7 +26,7 @@ function WelcomeScreen({ navigation }) {
               )
             }
           >
-            <Text style={styles.quoteButton}>Amazon Banana Stands!</Text>
+            <Text style={styles.quoteButton}> Amazon Banana Stands!</Text>
           </TouchableOpacity>
         </Text>
       </View>
@@ -52,7 +52,9 @@ function WelcomeScreen({ navigation }) {
 
 const styles = StyleSheet.create({
   quoteButton: {
-    backgroundColor: 'pink'
+    backgroundColor: 'pink',
+    //flex: 1,
+    //justifyContent: 'flex-end'
   },
   linkBox: {
     flex: 1
