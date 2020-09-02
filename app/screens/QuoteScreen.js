@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import quoteData from "../quoteData";
 import bananas from "../assets/GreenBananas.png";
-// Image from Unsplash: https://unsplash.com/photos/Ar0QYv-qtw4
 
 class QuoteScreen extends React.Component {
   constructor() {
@@ -49,15 +48,19 @@ class QuoteScreen extends React.Component {
     return (
       <ImageBackground source={bananas} style={styles.backgroundImg}>
         <View style={styles.content}>
-          <View style={styles.textBlock}>
-            <Text style={styles.quoteText}>"{this.state.quoteInfo.quote}"</Text>
-            <Text style={styles.authorName}>
-              -{this.state.quoteInfo.author}
-            </Text>
+          <View style={styles.textContainer}>
+            <View style={styles.textBlock}>
+              <Text style={styles.quoteText}>
+                "{this.state.quoteInfo.quote}"
+              </Text>
+              <Text style={styles.authorName}>
+                -{this.state.quoteInfo.author}
+              </Text>
+            </View>
           </View>
 
           <View style={styles.buttonContainer}>
-            <View style={styles.buttonFill}>
+            <View style={styles.shareFill}>
               <Button
                 onPress={this.onShare}
                 title="Share"
@@ -72,18 +75,6 @@ class QuoteScreen extends React.Component {
                 color="black"
               ></Button>
             </View>
-
-            {/* <View style={styles.buttonFill}>
-              <Button
-                title="Take a Photo"
-                onPress={() =>
-                  this.props.navigation.push("Camera", {
-                    quote: this.state.quoteInfo.quote, //Just passing quote for now.
-                  })
-                } //must match any name prop given in App.js for the Stack Screen
-                color="black"
-              ></Button>
-            </View> */}
           </View>
         </View>
       </ImageBackground>
@@ -100,14 +91,18 @@ const styles = StyleSheet.create({
   content: {
     flex: 1,
     padding: 20,
-    justifyContent: "center",
-    alignItems: "center",
+  },
+
+  textContainer: {
+    paddingTop: 50,
+    flex: 1,
+    justifyContent: "flex-end",
   },
 
   textBlock: {
     padding: 20,
     backgroundColor: "white",
-    opacity: 0.7,
+    opacity: 0.9,
   },
 
   quoteText: {
@@ -123,6 +118,7 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     flex: 1,
+    justifyContent: "flex-end",
     alignItems: "center",
     padding: 20,
   },
@@ -130,7 +126,14 @@ const styles = StyleSheet.create({
   buttonFill: {
     backgroundColor: "#cfe571",
     width: "50%",
-    margin: 5,
+    margin: 10,
+    borderRadius: 10,
+  },
+
+  shareFill: {
+    backgroundColor: "orange",
+    width: "50%",
+    margin: 10,
     borderRadius: 10,
   },
 });
