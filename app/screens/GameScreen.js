@@ -188,18 +188,18 @@ export default class GameScreen extends React.Component {
         <Container>
           <ImageBackground source={require('../assets/GoBananasSTILL.png')}
             style={styles.backgroundimage}>
-          <Header>
+          {/* <Header>
             <Left />
             <Body>
               <Title>{`Player's Turn: ${this.state.currentPlayer}`}</Title>
             </Body>
             <Right />
-          </Header>
+          </Header> */}
           <View style={styles.container}>
             {this.renderBoard()}
             {this.state.x.length + this.state.o.length > 0 && (
               <React.Fragment>
-<Button rounded success large onPress={this.resetBoard}>
+                <Button rounded success large onPress={this.resetBoard}>
                   <Text>    New Game</Text>
                   <Icon name='grid' />
 
@@ -224,7 +224,7 @@ export default class GameScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: "60%",
+    marginTop: "75%",
     height: "100%",
     width: "100%",
     flexDirection: "row",
