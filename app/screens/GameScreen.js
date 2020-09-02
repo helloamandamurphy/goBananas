@@ -22,7 +22,11 @@ import {
   TouchableOpacity,
   Alert,
   Vibration,
+  Image,
 } from "react-native";
+
+import x from "../assets/XBananas.png";
+import o from "../assets/OBananas.png";
 
 export default class GameScreen extends React.Component {
   constructor(props) {
@@ -51,13 +55,13 @@ export default class GameScreen extends React.Component {
           style={styles.box}
           onPress={this.tapped.bind(this, i)}
         >
-          <Text style={styles.value}>
-            {this.state.x.includes(i)
-              ? "x"
-              : this.state.o.includes(i)
-              ? "o"
-              : null}
-          </Text>
+          <View style={styles.value}>
+            {this.state.x.includes(i) ? (
+              <Image source={x} alt="x" style={styles.token}></Image>
+            ) : this.state.o.includes(i) ? (
+              <Image source={o} alt="o" style={styles.token}></Image>
+            ) : null}
+          </View>
         </TouchableOpacity>
       );
     }
@@ -237,5 +241,9 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     alignItems: "center",
     fontSize: 50,
+  },
+  token: {
+    height: 100,
+    width: 100,
   },
 });
