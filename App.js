@@ -8,8 +8,6 @@ import WelcomeScreen from "./app/screens/WelcomeScreen";
 import QuoteScreen from "./app/screens/QuoteScreen";
 import CameraScreen from "./app/screens/CameraScreen";
 import GameScreen from "./app/screens/GameScreen";
-import BoxComponent from "./app/screens/BoxComponent";
-import BoardComponent from "./app/screens/BoardComponent";
 
 const Stack = createStackNavigator();
 
