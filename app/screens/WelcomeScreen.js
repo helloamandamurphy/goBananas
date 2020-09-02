@@ -2,16 +2,14 @@ import React from "react";
 import {
   StyleSheet,
   Button,
-  ImageBackground,
-  Text,
   View,
   TouchableOpacity,
-  Dimensions, Linking, SafeAreaView, Image
+  Linking,
+  Image,
 } from "react-native";
-import { TextInput, TouchableHighlight } from "react-native-gesture-handler";
 import { Video } from "expo-av";
 
-const { width } = Dimensions.get("window");
+// const { width } = Dimensions.get("window");
 
 function WelcomeScreen({ navigation }) {
   return (
@@ -53,7 +51,7 @@ const styles = StyleSheet.create({
   buttonSpace: {
     top: 400,
     left: 100,
-    zIndex: 2
+    zIndex: 2,
   },
   playButton: {
     width: 200,
