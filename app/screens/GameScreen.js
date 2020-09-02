@@ -179,28 +179,32 @@ export default class GameScreen extends React.Component {
   render() {
     return (
       <Root>
-      <Container>
-        <Header>
-          <Left />
-          <Body>
-            <Title>{`Player's Turn: ${this.state.currentPlayer}`}</Title>
-          </Body>
-          <Right />
-        </Header>
-        <View style={styles.container}>
-          {this.renderBoard()}
-          {this.state.x.length + this.state.o.length > 0 && (
-            <React.Fragment>
-              <Button bordered large onPress={this.resetBoard}>
-                <Text>New Game</Text>
-              </Button>
-              <Button bordered large onPress={this.resetBoard}>
-                <Text>Get Quote!</Text>
-              </Button>
-          </React.Fragment>
-          )}
-        </View>
-      </Container>
+        <Container>
+          <Header>
+            <Left />
+            <Body>
+              <Title>{`Player's Turn: ${this.state.currentPlayer}`}</Title>
+            </Body>
+            <Right />
+          </Header>
+          <View style={styles.container}>
+            {this.renderBoard()}
+            {this.state.x.length + this.state.o.length > 0 && (
+              <React.Fragment>
+                <Button bordered large onPress={this.resetBoard}>
+                  <Text>New Game</Text>
+                </Button>
+                <Button
+                  bordered
+                  large
+                  onPress={() => this.props.navigation.push("Quote")}
+                >
+                  <Text>Get Quote!</Text>
+                </Button>
+              </React.Fragment>
+            )}
+          </View>
+        </Container>
       </Root>
     );
   }
