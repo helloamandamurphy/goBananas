@@ -9,6 +9,7 @@ import {
   Left,
   Right,
   Body,
+  Icon,
   Title,
   Card,
   CardItem,
@@ -23,6 +24,7 @@ import {
   Alert,
   Vibration,
   Image,
+  ImageBackground,
 } from "react-native";
 
 import x from "../assets/XBananas.png";
@@ -184,6 +186,8 @@ export default class GameScreen extends React.Component {
     return (
       <Root>
         <Container>
+          <ImageBackground source={require('../assets/GoBananasSTILL.png')}
+            style={styles.backgroundimage}>
           <Header>
             <Left />
             <Body>
@@ -195,19 +199,23 @@ export default class GameScreen extends React.Component {
             {this.renderBoard()}
             {this.state.x.length + this.state.o.length > 0 && (
               <React.Fragment>
-                <Button bordered large onPress={this.resetBoard}>
-                  <Text>New Game</Text>
+<Button rounded success large onPress={this.resetBoard}>
+                  <Text>    New Game</Text>
+                  <Icon name='grid' />
+
                 </Button>
                 <Button
-                  bordered
+                  rounded warning
                   large
                   onPress={() => this.props.navigation.push("Quote")}
                 >
-                  <Text>Get Quote!</Text>
+                  <Text>    Get Quote!</Text>
+                  <Icon name='chatbubbles' />
                 </Button>
               </React.Fragment>
             )}
           </View>
+          </ImageBackground>
         </Container>
       </Root>
     );
@@ -216,23 +224,29 @@ export default class GameScreen extends React.Component {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: "40%",
+    marginTop: "60%",
     height: "100%",
     width: "100%",
     flexDirection: "row",
     flexWrap: "wrap",
     flexBasis: "30%",
-    backgroundColor: "#fff",
+    backgroundColor: "#cfe571",
     alignItems: "center",
     justifyContent: "center",
   },
+  backgroundimage: {
+    width: "100%",
+    height: "100%",
+  },
   box: {
     // display: "inline-block",
-    flexGrow: 1,
+    //flexGrow: 1,
     height: "50%",
     width: "33%",
     borderStyle: "solid",
-    borderWidth: 3,
+    borderColor: "darkgreen",
+    backgroundColor: "white",
+    borderWidth: 5,
     justifyContent: "center",
     alignItems: "center",
   },

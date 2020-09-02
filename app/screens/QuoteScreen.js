@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 import quoteData from "../quoteData";
-import bananas from "../assets/bananas.jpg";
+import bananas from "../assets/GreenBananas.png";
 // Image from Unsplash: https://unsplash.com/photos/Ar0QYv-qtw4
 
 class QuoteScreen extends React.Component {
