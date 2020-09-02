@@ -1,15 +1,10 @@
 import "react-native-gesture-handler";
-import { StatusBar } from "expo-status-bar";
 import * as React from "react";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import WelcomeScreen from "./app/screens/WelcomeScreen";
 import QuoteScreen from "./app/screens/QuoteScreen";
-import CameraScreen from "./app/screens/CameraScreen";
 import GameScreen from "./app/screens/GameScreen";
-import BoxComponent from "./app/screens/BoxComponent";
-import BoardComponent from "./app/screens/BoardComponent";
 
 const Stack = createStackNavigator();
 
@@ -41,11 +36,3 @@ export default class App extends React.Component {
     );
   }
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: "center",
-//     marginHorizontal: 16,
-//   },
-// });
