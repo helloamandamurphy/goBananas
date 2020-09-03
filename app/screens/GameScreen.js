@@ -5,15 +5,7 @@ import {
   Button,
   Toast,
   Text as NText,
-  Header,
-  Left,
-  Right,
-  Body,
   Icon,
-  Title,
-  Card,
-  CardItem,
-  Content,
 } from "native-base";
 
 import {
@@ -21,7 +13,6 @@ import {
   Text,
   View,
   TouchableOpacity,
-  Alert,
   Vibration,
   Image,
   ImageBackground,
@@ -127,6 +118,8 @@ export default class GameScreen extends React.Component {
     if (this.state.x.length + this.state.o.length >= 9)
       return this.resetBoard(1);
   }
+
+  
   resetBoard(player) {
     if (this.state.x.length + this.state.o.length === 0) return;
     if (typeof player === "object") {
@@ -151,6 +144,7 @@ export default class GameScreen extends React.Component {
     ];
   }
 
+  //uses Native Base
   displayToast(player) {
     if (player === 1) {
       Vibration.vibrate();
@@ -188,13 +182,6 @@ export default class GameScreen extends React.Component {
         <Container>
           <ImageBackground source={require('../assets/GoBananasSTILL.png')}
             style={styles.backgroundimage}>
-          {/* <Header>
-            <Left />
-            <Body>
-              <Title>{`Player's Turn: ${this.state.currentPlayer}`}</Title>
-            </Body>
-            <Right />
-          </Header> */}
           <View style={styles.container}>
             {this.renderBoard()}
             {this.state.x.length + this.state.o.length > 0 && (
@@ -202,8 +189,8 @@ export default class GameScreen extends React.Component {
                 <Button rounded success large onPress={this.resetBoard}>
                   <Text>    New Game</Text>
                   <Icon name='grid' />
-
                 </Button>
+
                 <Button
                   rounded warning
                   large
@@ -239,8 +226,6 @@ const styles = StyleSheet.create({
     height: "100%",
   },
   box: {
-    // display: "inline-block",
-    //flexGrow: 1,
     height: "50%",
     width: "33%",
     borderStyle: "solid",
