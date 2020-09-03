@@ -119,7 +119,6 @@ export default class GameScreen extends React.Component {
       return this.resetBoard(1);
   }
 
-  
   resetBoard(player) {
     if (this.state.x.length + this.state.o.length === 0) return;
     if (typeof player === "object") {
@@ -180,28 +179,31 @@ export default class GameScreen extends React.Component {
     return (
       <Root>
         <Container>
-          <ImageBackground source={require('../assets/GoBananasSTILL.png')}
-            style={styles.backgroundimage}>
-          <View style={styles.container}>
-            {this.renderBoard()}
-            {this.state.x.length + this.state.o.length > 0 && (
-              <React.Fragment>
-                <Button rounded success large onPress={this.resetBoard}>
-                  <Text>    New Game</Text>
-                  <Icon name='grid' />
-                </Button>
+          <ImageBackground
+            source={require("../assets/GoBananasSTILL.png")}
+            style={styles.backgroundimage}
+          >
+            <View style={styles.container}>
+              {this.renderBoard()}
+              {this.state.x.length + this.state.o.length > 0 && (
+                <React.Fragment>
+                  <Button rounded success large onPress={this.resetBoard}>
+                    <Text> New Game</Text>
+                    <Icon name="grid" />
+                  </Button>
 
-                <Button
-                  rounded warning
-                  large
-                  onPress={() => this.props.navigation.push("Quote")}
-                >
-                  <Text>    Get Quote!</Text>
-                  <Icon name='chatbubbles' />
-                </Button>
-              </React.Fragment>
-            )}
-          </View>
+                  <Button
+                    rounded
+                    warning
+                    large
+                    onPress={() => this.props.navigation.push("Quote")}
+                  >
+                    <Text> Get Quote!</Text>
+                    <Icon name="chatbubbles" />
+                  </Button>
+                </React.Fragment>
+              )}
+            </View>
           </ImageBackground>
         </Container>
       </Root>
@@ -246,3 +248,5 @@ const styles = StyleSheet.create({
     width: 100,
   },
 });
+
+// Base code for Tic-Tac-Toe from: https://github.com/archcorsair/react-native-tictactoe
